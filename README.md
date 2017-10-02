@@ -1,3 +1,16 @@
+After downloading El Capitan from the App Store's `purchased` tab, these were Israel's command lines:
+
+```
+sudo prepare_iso/prepare_iso.sh "/Applications/Install OS X El Capitan.app" out
+```
+
+```
+cd packer
+```
+```
+packer build -var chef_version=latest -var puppet_agent_version=latest -var puppet_version=latest -var facter_version=latest -var hiera_version=latest -var autologin=true -var iso_url=../out/OSX_InstallESD_10.11.6_15G31.dmg -only vmware-iso template.json
+```
+
 # OS X templates for Packer and VeeWee
 
 This is a set of Packer templates and support scripts that will prepare an OS X installer media that performs an unattended install for use with [Packer](http://packer.io) and [VeeWee](http://github.com/jedi4ever/veewee). These were originally developed for VeeWee, but support for the VeeWee template has not been maintained since Packer's release and so it is only provided for historical purposes. I plan on removing VeeWee support from this repo soon, but VeeWee can still make use of the preparation script and the [OS X template](https://github.com/jedi4ever/veewee/tree/master/templates/OSX) remains in the core VeeWee repo.
